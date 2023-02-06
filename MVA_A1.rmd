@@ -1,0 +1,37 @@
+---
+title: " MVA_HW_1"
+author: "ta560@scarletmail.rutgers.edu"
+date: "2/6/2023"
+output: html_document
+---
+  
+```{r}
+library(readr)
+Bumpus_sparrows <- read_csv("C:/Users/ta560/Downloads/Bumpus_sparrows.csv")
+# This is the data containing the sparrows that survived and those who have not.
+
+sparr <- Bumpus_sparrows
+sparr
+sparr <- as.data.frame(sparr)
+#Column Means
+colMeans(subset(sparr, Survivorship == "NS")[,c("Total_length","Alar_extent","L_beak_head","L_humerous","L_keel_sternum")])
+#We can see the total length, Alar_extent , L_beak_head, L_humerous and L_keel_sternum of the sparrows that have not survived.
+
+colMeans(subset(sparr, Survivorship == "S")[,c("Total_length","Alar_extent","L_beak_head","L_humerous","L_keel_sternum")])
+#This is the total length, Alar_extent , L_beak_head, L_humerous and L_keel_sternum of the sparrows that have survived.
+
+#Correlation
+cor(subset(sparr, Survivorship == "NS")[,c("Total_length","Alar_extent","L_beak_head","L_humerous","L_keel_sternum")])
+#Here we have calculated the correlation for the sparrows which have not survived. We can see that the lowest value between L_keel_sternum and L_beak_head of 0.5698.
+
+cor(subset(sparr, Survivorship == "S")[,c("Total_length","Alar_extent","L_beak_head","L_humerous","L_keel_sternum")])
+#We have calculated the correlation for the sparrows which have survived.We can see the lowest value between L_keel_sternum and Alar_Extent of 0.2774.
+
+#Covariance
+cov(subset(sparr, Survivorship == "NS")[,c("Total_length","Alar_extent","L_beak_head","L_humerous","L_keel_sternum")])
+#We have calculated the covariance for the sparrows which have not survived.Here the highest value is between Alar_extent itself that is 32.55 and lowest value is between L_humerous itself with a covariance of 0.4344.
+
+cov(subset(sparr, Survivorship == "S")[,c("Total_length","Alar_extent","L_beak_head","L_humerous","L_keel_sternum")])
+#Here we have calculated the covariance for the sparrows which have survived.Here the highest value is between Total_length itself that is 11.04 and lowest value is between L_humerous and L_keel_sternum with 0.1325.
+```
+
